@@ -1,0 +1,175 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ZANU PF Mashonaland West Digital Hub</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script defer>
+    let loggedIn = false;
+    let analytics = { pageVisits: 0, newsPosts: 0, youthProjectsSubmitted: 0 };function trackVisit() {
+  analytics.pageVisits += 1;
+  console.log(`Page visits: ${analytics.pageVisits}`);
+}
+
+function login(event) {
+  event.preventDefault();
+  const username = document.getElementById('username').value;
+  const password = document.getElementById('password').value;
+  if (username === 'admin' && password === '1234') {
+    loggedIn = true;
+    document.getElementById('loginSection').classList.add('hidden');
+    document.getElementById('adminPanel').classList.remove('hidden');
+    alert('Login successful!');
+    trackVisit();
+  } else {
+    alert('Invalid credentials');
+  }
+}
+
+function postNews(event) {
+  event.preventDefault();
+  const title = document.getElementById('newsTitle').value;
+  const content = document.getElementById('newsContent').value;
+  const newsList = document.getElementById('dynamicNews');
+  const article = document.createElement('div');
+  article.className = 'bg-white p-4 rounded-lg shadow';
+  article.innerHTML = `<h4 class='font-semibold mb-2'>${title}</h4><p class='text-sm'>${content}</p>`;
+  newsList.prepend(article);
+  document.getElementById('newsForm').reset();
+  analytics.newsPosts += 1;
+  console.log(`News posts: ${analytics.newsPosts}`);
+  alert('News posted successfully!');
+}
+
+function submitFunding(event) {
+  event.preventDefault();
+  const name = document.getElementById('fundName').value;
+  const email = document.getElementById('fundEmail').value;
+  const message = document.getElementById('fundMessage').value;
+  alert(`Thank you ${name}. Your funding request/message has been sent to justdigitalcpt@gmail.com.`);
+  document.getElementById('fundForm').reset();
+}
+
+function submitYouthProject(event) {
+  event.preventDefault();
+  const name = document.getElementById('projectName').value;
+  const email = document.getElementById('projectEmail').value;
+  const projectDesc = document.getElementById('projectDesc').value;
+  alert(`Thank you ${name}. Your IT/Tech project idea has been submitted for review. We will contact you at ${email}.`);
+  document.getElementById('youthProjectForm').reset();
+  analytics.youthProjectsSubmitted += 1;
+  console.log(`Youth projects submitted: ${analytics.youthProjectsSubmitted}`);
+}
+
+document.addEventListener('DOMContentLoaded', trackVisit);
+
+  </script>
+</head>
+<body class="bg-gray-50 text-gray-800">  <!-- Header -->  <header class="bg-green-700 text-white p-6 text-center">
+    <h1 class="text-3xl font-bold">ZANU PF Mashonaland West Digital Hub</h1>
+    <p class="text-sm mt-2">Connecting communities and empowering youth through digital transformation.</p>
+  </header>  <!-- Hero Section -->  <section class="bg-gradient-to-r from-green-700 via-yellow-500 to-red-600 text-white py-16 text-center">
+    <h2 class="text-4xl font-bold mb-4">Empowering Communities in Mashonaland West</h2>
+    <p class="text-lg mb-6">Connecting unemployed youths with digital opportunities while supporting national development.</p>
+    <a href="#join" class="bg-white text-green-700 px-6 py-2 rounded-lg font-semibold hover:bg-yellow-400">Join Us</a>
+  </section>  <!-- Vision 2030 Alignment -->  <section class="max-w-5xl mx-auto p-8 bg-gray-100 rounded-lg my-8">
+    <h3 class="text-2xl font-bold mb-4 text-green-700">Vision 2030 Alignment</h3>
+    <p class="mb-4">Zimbabwe’s Vision 2030 aims to create an upper-middle-income economy through digital transformation, innovation, and youth empowerment. This project trains unemployed youth in IT and tech while modernizing provincial digital infrastructure in Mashonaland West.</p>
+    <ul class="list-disc pl-6">
+      <li>Web & App Development for e-Government and digital services</li>
+      <li>Cybersecurity & Database Management for secure data</li>
+      <li>AI & Machine Learning for smart decision-making</li>
+      <li>Digital Marketing & Communication to reach youth</li>
+      <li>Entrepreneurship & Fintech to drive innovation</li>
+    </ul>
+  </section>  <!-- Provincial Leadership Section -->  <section class="max-w-5xl mx-auto p-8 bg-white rounded-lg shadow my-8">
+    <h3 class="text-2xl font-bold mb-4 text-green-700">Mashonaland West Provincial Leadership</h3>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="p-4 border rounded">
+        <h4 class="font-semibold mb-2">Mary Mliswa-Chikoka</h4>
+        <p>Provincial Chairperson</p>
+        <p>Central Committee Member, oversees party activities in Mashonaland West, key in mobilizing voters and strategic planning.</p>
+      </div>
+      <div class="p-4 border rounded">
+        <h4 class="font-semibold mb-2">Ziyambi Ziyambi</h4>
+        <p>Minister of Justice & Politburo Member</p>
+      </div>
+      <div class="p-4 border rounded">
+        <h4 class="font-semibold mb-2">July Moyo</h4>
+        <p>Minister of Local Government & Senior Party Member</p>
+      </div>
+    </div>
+  </section>  <!-- Provincial Headquarters & Contact -->  <section class="max-w-5xl mx-auto p-8 bg-gray-100 rounded-lg my-8">
+    <h3 class="text-2xl font-bold mb-4 text-green-700">Provincial Headquarters</h3>
+    <p>Address: [Insert Mashonaland West Office Address]</p>
+    <p>Official National Website: <a href="https://www.zanupf.org.zw" target="_blank" class="text-green-700 underline">www.zanupf.org.zw</a></p>
+    <p>Follow social media for updates.</p>
+  </section>  <!-- News Section -->  <section class="bg-gray-100 py-8">
+    <div class="max-w-5xl mx-auto p-6">
+      <h3 class="text-2xl font-bold mb-4 text-green-700">Mashonaland West News</h3>
+      <div id="dynamicNews" class="grid md:grid-cols-3 gap-6">
+        <div class="bg-white p-4 rounded-lg shadow">
+          <h4 class="font-semibold mb-2">Provincial Coordination Committee Meeting</h4>
+          <p class="text-sm">Meeting held to strategize local youth empowerment programs and provincial development initiatives.</p>
+        </div>
+      </div>
+    </div>
+  </section>  <!-- Admin Login -->  <section id="loginSection" class="max-w-md mx-auto p-8 text-center">
+    <h3 class="text-2xl font-bold mb-4 text-green-700">Admin Login</h3>
+    <form onsubmit="login(event)" class="grid gap-4">
+      <input id="username" type="text" placeholder="Username" class="p-3 border rounded" required />
+      <input id="password" type="password" placeholder="Password" class="p-3 border rounded" required />
+      <button type="submit" class="bg-green-700 text-white py-2 rounded font-semibold hover:bg-green-800">Login</button>
+    </form>
+  </section>  <!-- Admin Panel -->  <section id="adminPanel" class="hidden max-w-lg mx-auto p-8 bg-white rounded-lg shadow text-center">
+    <h3 class="text-2xl font-bold mb-4 text-green-700">Post News Update</h3>
+    <form id="newsForm" onsubmit="postNews(event)" class="grid gap-4">
+      <input id="newsTitle" type="text" placeholder="News Title" class="p-3 border rounded" required />
+      <textarea id="newsContent" placeholder="News Content" class="p-3 border rounded" rows="4" required></textarea>
+      <button type="submit" class="bg-yellow-500 text-white py-2 rounded font-semibold hover:bg-yellow-600">Post News</button>
+    </form>
+  </section>  <!-- Join Us Section -->  <section id="join" class="max-w-4xl mx-auto p-8 text-center">
+    <h3 class="text-2xl font-bold mb-4 text-green-700">Join the Movement</h3>
+    <form class="grid gap-4 max-w-md mx-auto">
+      <input type="text" placeholder="Full Name" class="p-3 border rounded" required />
+      <input type="email" placeholder="Email Address" class="p-3 border rounded" />
+      <input type="tel" placeholder="Phone Number" class="p-3 border rounded" required />
+      <button type="submit" class="bg-green-700 text-white py-2 rounded font-semibold hover:bg-green-800">Submit</button>
+    </form>
+  </section>  <!-- Fund This Program Section -->  <section id="fund" class="max-w-4xl mx-auto p-8 text-center bg-gray-100 rounded-lg my-8">
+    <h3 class="text-2xl font-bold mb-4 text-green-700">Fund This Program</h3>
+    <p class="mb-6">Support the Mashonaland West Digital Empowerment Hub and empower unemployed youths in tech.</p>
+    <form id="fundForm" onsubmit="submitFunding(event)" class="grid gap-4 max-w-md mx-auto">
+      <input id="fundName" type="text" placeholder="Your Name" class="p-3 border rounded" required />
+      <input id="fundEmail" type="email" placeholder="Email Address" class="p-3 border rounded" required />
+      <textarea id="fundMessage" placeholder="Message or Funding Request" class="p-3 border rounded" rows="4" required></textarea>
+      <button type="submit" class="bg-green-700 text-white py-2 rounded font-semibold hover:bg-green-800">Send Request</button>
+    </form>
+  </section>  <!-- Youth Project Submission Section -->  <section id="youthProjects" class="max-w-4xl mx-auto p-8 text-center bg-white rounded-lg shadow my-8">
+    <h3 class="text-2xl font-bold mb-4 text-green-700">Submit Your IT/Tech Project Idea</h3>
+    <p class="mb-6">Unemployed youths can submit innovative IT or tech project ideas to gain support and potential funding.</p>
+    <form id="youthProjectForm" onsubmit="submitYouthProject(event)" class="grid gap-4 max-w-md mx-auto">
+      <input id="projectName" type="text" placeholder="Your Full Name" class="p-3 border rounded" required />
+      <input id="projectEmail" type="email" placeholder="Email Address" class="p-3 border rounded" required />
+      <textarea id="projectDesc" placeholder="Project Description" class="p-3 border rounded" rows="4" required></textarea>
+      <button type="submit" class="bg-yellow-500 text-white py-2 rounded font-semibold hover:bg-yellow-600">Submit Project</button>
+    </form>
+  </section>  <!-- Social Media Feeds & Gallery -->  <!-- About Developer Section -->  <section class="max-w-4xl mx-auto p-8 text-center bg-white rounded-lg shadow my-8">
+    <h3 class="text-2xl font-bold mb-4 text-green-700">About the Developer</h3>
+    <p>Website developed by <strong>Nyasha Arthur Matengarufu</strong>, IT volunteer and web developer. Passionate about youth empowerment, digital innovation, and creating solutions that bridge communities with technology in Mashonaland West.</p>
+  </section>  <!-- Analytics Dashboard Preview -->  <section id="analytics" class="max-w-4xl mx-auto p-8 text-center bg-gray-100 rounded-lg shadow my-8">
+    <h3 class="text-2xl font-bold mb-4 text-green-700">Site Analytics Preview (Admin Only)</h3>
+    <p>Page Visits: <span id="visits">0</span></p>
+    <p>News Posts: <span id="newsCount">0</span></p>
+    <p>Youth Projects Submitted: <span id="projectCount">0</span></p>
+    <script>
+      setInterval(()=>{
+        document.getElementById('visits').innerText = analytics.pageVisits;
+        document.getElementById('newsCount').innerText = analytics.newsPosts;
+        document.getElementById('projectCount').innerText = analytics.youthProjectsSubmitted;
+      }, 1000);
+    </script>
+  </section>  <!-- Footer -->  <footer class="bg-green-700 text-white text-center py-4">
+    <p class="text-sm">© 2025 ZANU PF Mashonaland West Digital Hub | Built by Nyasha Arthur Matengarufu | Email: justdigitalcpt@gmail.com | Phone: 0777199193</p>
+  </footer></body>
+</html>
